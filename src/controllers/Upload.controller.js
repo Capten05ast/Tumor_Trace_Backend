@@ -1,7 +1,7 @@
 
 
 const User = require("../models/user.model");
-const uploadFile = require("../cloud/imageKit"); // Your ImageKit helper
+const uploadFile = require("../cloud/imagekit"); // Your ImageKit helper
 
 exports.uploadFile = async (req, res) => {
   try {
