@@ -2,8 +2,8 @@
 
 const express = require("express");
 const cookieParser = require("cookie-parser");
-const userRoutes = require("./routes/user.routes");
-const uploadRoutes = require("./routes/upload.routes");
+const userRoutes = require("./routes/User.routes");
+const uploadRoutes = require("./routes/Upload.routes");
 const authRoutes = require('./routes/auth');
 
 const cors = require("cors");
@@ -12,7 +12,7 @@ const cors = require("cors");
 const mlRoutes = require("./routes/ml.routes");
 
 // PAYMENT ROUTES :-
-const paymentRoute = require("./routes/payment.routes");
+const paymentRoute = require("./routes/Payment.routes");
 
 const app = express();
 
