@@ -16,9 +16,18 @@ const paymentRoute = require("./routes/Payment.routes");
 
 const app = express();
 
+// ✅ CORS Configuration for Production
+const allowedOrigins = [
+  "http://localhost:5173",  // Development
+  "http://localhost:3000",  // Alternative dev
+  "https://tumor-trace-frontend.onrender.com",  // ✅ Production
+  process.env.FRONTEND_URL  // From .env
+];
+
 app.use(cors({
-  origin: "http://localhost:5173",
-  credentials: true
+  origin: allowedOrigins,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS']
 }));
 
 // MIDDLEWARES :-
@@ -33,4 +42,10 @@ app.use("/api", mlRoutes);
 app.use("/api/payment", paymentRoute);
 app.use('/api/auth', authRoutes);
 
+// ✅ Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'Backend is running ✅', timestamp: new Date() });
+});
+
 module.exports = app;
+
