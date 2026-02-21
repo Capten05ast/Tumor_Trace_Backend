@@ -19,7 +19,7 @@ const generateId = () => {
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: process.env.GOOGLE_CALLBACK_URL || 'http://https://tumor-trace-backend.onrender.com/api/auth/google/callback',  // ✅ FIXED: Use full URL from env
+  callbackURL: process.env.GOOGLE_CALLBACK_URL || 'https://tumor-trace-backend.onrender.com/api/auth/google/callback',  // ✅ FIXED: Use full URL from env
 }, (accessToken, refreshToken, profile, done) => {
   const user = {
     id: profile.id,
