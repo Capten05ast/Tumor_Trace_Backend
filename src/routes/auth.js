@@ -19,7 +19,7 @@ const generateId = () => {
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: '/api/auth/google/callback',
+  callbackURL: process.env.GOOGLE_CALLBACK_URL || 'http://localhost:5000/api/auth/google/callback',  // ✅ FIXED: Use full URL from env
 }, (accessToken, refreshToken, profile, done) => {
   const user = {
     id: profile.id,
@@ -119,7 +119,7 @@ router.get('/google/callback',
       };
 
       // Redirect to frontend with token and user data
-      const redirectUrl = `${process.env.FRONTEND_URL}/login?token=${token}&user=${encodeURIComponent(JSON.stringify(userData))}`;
+      const redirectUrl = `${process.env.FRONTEND_URL}/?token=${token}&user=${encodeURIComponent(JSON.stringify(userData))}`;
       
       console.log('\n✅ REDIRECTING TO FRONTEND');
       console.log('🔗 Redirect URL:', redirectUrl.substring(0, 100) + '...');
@@ -148,5 +148,4 @@ router.get('/google/failure', (req, res) => {
 
 // ✅ EXPORT THE ROUTER
 module.exports = router;
-
 
