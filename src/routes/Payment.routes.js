@@ -6,7 +6,7 @@ const {
   createOrder,
   verifyPayment,
   saveClassification
-} = require('../controllers/payment.controller');
+} = require('../controllers/Payment.controller');
 
 /**
  * @route   POST /api/payment/create-order
