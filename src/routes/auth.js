@@ -119,7 +119,7 @@ router.get('/google/callback',
       };
 
       // Redirect to frontend with token and user data
-      const redirectUrl = `${process.env.FRONTEND_URL}/?token=${token}&user=${encodeURIComponent(JSON.stringify(userData))}`;
+      const redirectUrl = `${process.env.FRONTEND_URL}/login?token=${token}&user=${encodeURIComponent(JSON.stringify(userData))}`;
       
       console.log('\n✅ REDIRECTING TO FRONTEND');
       console.log('🔗 Redirect URL:', redirectUrl.substring(0, 100) + '...');
